@@ -1,4 +1,4 @@
-checkpackage week1.day1;
+package week1.day1;
 public class Assignment1Day1 
 {
 	public void factorial(int num)
