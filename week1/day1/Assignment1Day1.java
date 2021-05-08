@@ -26,6 +26,7 @@ public class Assignment1Day1
 		    secNum=sum;
 		    System.out.println(sum);
 		}
+		System.out.println("\r\n");
 	}
 	
 	public void prime1(int num)
@@ -33,7 +34,7 @@ public class Assignment1Day1
 		boolean status=false;
 		if(num==1)
 		{
-			System.out.println(num+" is Prime Number");
+			System.out.println(num+" is Prime Number"+"\r\n");
 		}
 		for(int i=2;i<=num/2;i++)
 		{
@@ -45,11 +46,11 @@ public class Assignment1Day1
 		}
 		if(status==false)
 		 {
-			System.out.println(num+" is Prime Number");
+			System.out.println(num+" is Prime Number"+"\r\n");
 		 }
 		else
 		 {
-			System.out.println(num+" is NOT Prime Number");
+			System.out.println(num+" is NOT Prime Number"+"\r\n");
 		 }
 	}
 	    
@@ -59,7 +60,7 @@ public class Assignment1Day1
 		int count=1;
 		if(num==1)
 		{
-			System.out.println(num+" is Prime Number");
+			System.out.println(num+" is Prime Number"+"\r\n");
 		}
 		for(int i=2;i<=num;i++)
 		 {
@@ -70,11 +71,11 @@ public class Assignment1Day1
 		 }
 	    if(count==2)
 	    {
-			System.out.println(num+" is Prime Number");
+			System.out.println(num+" is Prime Number"+"\r\n");
 		 }
 		else
 		 {
-			System.out.println(num+" is NOT Prime Number");
+			System.out.println(num+" is NOT Prime Number"+"\r\n");
 		 }
 	}
 	
