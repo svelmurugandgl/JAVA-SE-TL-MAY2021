@@ -1,0 +1,36 @@
+           
+		2. Enter the username based on its label
+		   Xpath://form[@id='login']/descendant::input[1]
+		
+		3. Enter the password based on its label
+		   Xpath://input[@class='decorativeSubmit']/preceding::input[1]
+		
+		4. Click Login
+		   Xpath:(//div[@id='form']//input)[3]
+		
+		5. Click on CRMSFA link
+		   Xpath:(//div[@id='form']//a)[2]
+		
+		6. Click on Leads link
+		   Xpath:(//li/following::a[1])[1]
+		
+		7. Click on Merge Leads link
+		   Xpath:(//div[@class='frameSectionBody']//a)[4]
+		
+		8. Click the first img icon
+		   Xpath:(//td//img)[1]
+		
+		9. Select the first resulting lead
+		   Xpath:(//div/a[@class='linktext'])[1]
+		
+		10. Click the second img icon
+		    Xpath:(//td//img)[2]
+		
+		11. Select the second resulting lead
+		    Xpath:(//tbody//a)[1]
+		
+		12. Click on Merge Lead (submit) button
+		    Xpath:(//td/child::a)[5]
+		
+		13. Get the company name text based on its label
+		    Xpath:(//span[@class='tabletext'])[3]
