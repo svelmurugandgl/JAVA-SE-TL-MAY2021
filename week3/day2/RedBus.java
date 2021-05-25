@@ -37,9 +37,9 @@ public class RedBus {
 		driver.findElement(By.xpath("(//ul[@class='autoFill']/li)[1]")).click();
 		// Press TAB key
 		to.sendKeys(Keys.TAB);
-		// Navigate to 1st June
+		// Navigate to June
 		driver.findElement(By.xpath("//button[text()='>']")).click();
-		// Select 1st Day
+		// Select 20th June Day
 		driver.findElement(By.xpath("//tbody/tr[5]//td[7]")).click();
 		// Click Search Bus
 		driver.findElement(By.id("search_btn")).click();
