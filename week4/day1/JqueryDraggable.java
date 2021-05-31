@@ -34,8 +34,8 @@ public class JqueryDraggable {
 		// Drag and Drop the Source Element
 		drag.dragAndDropBy(source, (source.getLocation().getX()) + 100, (source.getLocation().getY()) + 100).perform();
 		// To Ensure - Element Draggable is Success/Failure
-		// 8pixel offset applied to get absolute current location of the source element
-		if (source.getLocation().getX() - 8 != orgLocation.x && source.getLocation().getY() - 8 != orgLocation.y) {
+		// 8pixel offset applied to get absolute current location of the source element,when Draggable happened
+		if (source.getLocation().getX() != orgLocation.x && source.getLocation().getY() != orgLocation.y) {
 			System.out.println(
 					"Original Source Element Locations(x,y)= " + "(" + orgLocation.x + "," + orgLocation.y + ")");
 			System.out.println("Moved Source Element Locations(x,y)= " + "(" + (source.getLocation().getX() - 8) + ","
@@ -44,11 +44,11 @@ public class JqueryDraggable {
 		} else {
 			System.out.println(
 					"Original Source Element Locations(x,y)= " + "(" + orgLocation.x + "," + orgLocation.y + ")");
-			System.out.println("Moved Source Element Locations(x,y)= " + "(" + (source.getLocation().getX() - 8) + ","
-					+ (source.getLocation().getY() - 8) + ")");
+			System.out.println("Moved Source Element Locations(x,y)= " + "(" + source.getLocation().getX() + ","
+					+ source.getLocation().getY() + ")");
 			System.out.println("Draggable is Failed - FAIL");
 		}
-		// Move to frame to Main Page
+		// Move frame to Main Page
 		driver.switchTo().defaultContent();
 		// Close Driver
 		Thread.sleep(10000);
