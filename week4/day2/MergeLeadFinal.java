@@ -7,7 +7,9 @@ import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.remote.RemoteWebDriver;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
@@ -29,6 +31,16 @@ public class MergeLeadFinal {
 		driver.findElement(By.partialLinkText("SFA")).click();
 		// Click Leads
 		driver.findElement(By.xpath("//a[text()='Leads']")).click();
+		// Click Find Leads
+		((RemoteWebDriver) driver).findElementByXPath("//a[text()='Find Leads']").click();
+		// Get 1st EMP ID
+		WebElement emp1 = ((RemoteWebDriver) driver)
+				.findElementByXPath("(//div[@unselectable='on']//a[@class='linktext'])[1]");
+		String fromLeadID = emp1.getText();
+		// Get 2nd EMP ID
+		WebElement emp2 = ((RemoteWebDriver) driver)
+				.findElementByXPath("(//table[contains(@class,'row-table')]//a[contains(@href,'partyId')])[6]");
+		String toLeadID = emp2.getText();
 		// Click Merge Leads
 		driver.findElement(By.linkText("Merge Leads")).click();
 		// Click From Lead Icon
@@ -40,7 +52,6 @@ public class MergeLeadFinal {
 		// Switch from main(0) window to new window(1)
 		driver.switchTo().window(listFromWindow.get(1));
 		// Enter Lead ID in new window
-		String fromLeadID = "10011";
 		driver.findElement(By.xpath("//input[@name='id']")).sendKeys(fromLeadID);
 		// Click Find Leads in new window
 		driver.findElement(By.xpath("//button[text()='Find Leads']")).click();
@@ -58,7 +69,7 @@ public class MergeLeadFinal {
 		// Switch from main(0) window to new window(1)
 		driver.switchTo().window(listToWindow.get(1));
 		// Enter Lead ID in new window
-		driver.findElement(By.xpath("//input[@name='id']")).sendKeys("10010");
+		driver.findElement(By.xpath("//input[@name='id']")).sendKeys(toLeadID);
 		// Click Find Leads in new window
 		driver.findElement(By.xpath("//button[text()='Find Leads']")).click();
 		Thread.sleep(5000);
