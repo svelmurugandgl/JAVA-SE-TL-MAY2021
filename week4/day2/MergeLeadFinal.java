@@ -37,10 +37,12 @@ public class MergeLeadFinal {
 		WebElement emp1 = ((RemoteWebDriver) driver)
 				.findElementByXPath("(//div[@unselectable='on']//a[@class='linktext'])[1]");
 		String fromLeadID = emp1.getText();
+		System.out.println("From Lead ID is "+fromLeadID);
 		// Get 2nd EMP ID
 		WebElement emp2 = ((RemoteWebDriver) driver)
 				.findElementByXPath("(//table[contains(@class,'row-table')]//a[contains(@href,'partyId')])[6]");
 		String toLeadID = emp2.getText();
+		System.out.println("To Lead ID is "+toLeadID);
 		// Click Merge Leads
 		driver.findElement(By.linkText("Merge Leads")).click();
 		// Click From Lead Icon
