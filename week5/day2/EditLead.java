@@ -50,7 +50,7 @@ public class EditLead extends TestBaseClass {
 
 	}
 
-	@DataProvider(name = "EditLead", indices = { 1 })
+	@DataProvider(name = "EditLead", indices =1)
 	String[][] inputData() throws IOException {
 		ReadExcelData read = new ReadExcelData();
 		String[][] data = read.getExcelData("contact", 8);
