@@ -90,7 +90,7 @@ public class MergeLeadFinal {
 		// Click Find Leads
 		driver.findElement(By.xpath("//button[text()='Find Leads']")).click();
 		// To Check Merge is successful/Failed validation
-		if (driver.findElement(By.xpath("//div[text()='No records to display']")).getText().contains("No records")) {
+		if (driver.findElement(By.xpath("//div//div[@class='x-paging-info']")).getText().contains("No records")) {
 			System.out.println(fromLeadID + " Merge Lead is Successful - PASS");
 		} else {
 			System.out.println(fromLeadID + " Merge Lead is NOT Successful - FAIL");
