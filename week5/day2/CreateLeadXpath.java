@@ -31,7 +31,7 @@ public class CreateLeadXpath extends TestBaseClass {
 
 	}
 
-	@DataProvider(name = "CreateLead", indices = 1)
+	@DataProvider(name = "CreateLead", indices = 2)
 	String[][] inputData() throws IOException {
 		ReadExcelData read = new ReadExcelData();
 		String[][] data = read.getExcelData("contact", 7);
