@@ -4,12 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.remote.RemoteWebDriver;
+
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
@@ -37,12 +37,18 @@ public class MergeLeadFinal {
 		WebElement emp1 = ((RemoteWebDriver) driver)
 				.findElementByXPath("(//div[@unselectable='on']//a[@class='linktext'])[1]");
 		String fromLeadID = emp1.getText();
-		System.out.println("From Lead ID is "+fromLeadID);
+		System.out.println("From Lead ID is " + fromLeadID);
 		// Get 2nd EMP ID
-		WebElement emp2 = ((RemoteWebDriver) driver)
-				.findElementByXPath("(//table[contains(@class,'row-table')]//a[contains(@href,'partyId')])[6]");
-		String toLeadID = emp2.getText();
-		System.out.println("To Lead ID is "+toLeadID);
+		List<WebElement> emp2 = ((RemoteWebDriver) driver)
+				.findElementsByXPath("(//table[contains(@class,'row-table')]//a[contains(@href,'partyId')])");
+		String toLeadID = "";
+		for (int i = 7; i < emp2.size(); i += 5) {
+			if (!emp2.get(2).getText().equalsIgnoreCase(emp2.get(i).getText())) {
+				toLeadID = emp2.get(i - 2).getText();
+				break;
+			}
+		}
+		System.out.println("To Lead ID is " + toLeadID);
 		// Click Merge Leads
 		driver.findElement(By.linkText("Merge Leads")).click();
 		// Click From Lead Icon
@@ -89,8 +95,10 @@ public class MergeLeadFinal {
 		driver.findElement(By.xpath("//input[@name='id']")).sendKeys(fromLeadID);
 		// Click Find Leads
 		driver.findElement(By.xpath("//button[text()='Find Leads']")).click();
+		Thread.sleep(3000);
 		// To Check Merge is successful/Failed validation
-		if (driver.findElement(By.xpath("//div//div[@class='x-paging-info']")).getText().contains("No records")) {
+		String msg = driver.findElement(By.xpath("//div//div[@class='x-paging-info']")).getText();
+		if (msg.contains("No records")) {
 			System.out.println(fromLeadID + " Merge Lead is Successful - PASS");
 		} else {
 			System.out.println(fromLeadID + " Merge Lead is NOT Successful - FAIL");
