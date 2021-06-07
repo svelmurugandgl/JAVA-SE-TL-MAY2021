@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Set;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.annotations.Test;
 
 public class MergeLeadFinal extends TestBaseClass {
@@ -12,17 +13,24 @@ public class MergeLeadFinal extends TestBaseClass {
 	public void runMergeLead() throws InterruptedException {
 
 		// Click Leads
-		driver.findElementByXPath("//a[text()='Leads']").click();
+		driver.findElement(By.xpath("//a[text()='Leads']")).click();
 		// Click Find Leads
-		driver.findElementByXPath("//a[text()='Find Leads']").click();
+		((RemoteWebDriver) driver).findElementByXPath("//a[text()='Find Leads']").click();
 		// Get 1st EMP ID
-		WebElement emp1 = driver.findElementByXPath("(//div[@unselectable='on']//a[@class='linktext'])[1]");
+		WebElement emp1 = ((RemoteWebDriver) driver)
+				.findElementByXPath("(//div[@unselectable='on']//a[@class='linktext'])[1]");
 		String fromLeadID = emp1.getText();
 		System.out.println("From Lead ID is " + fromLeadID);
 		// Get 2nd EMP ID
-		WebElement emp2 = driver
-				.findElementByXPath("(//table[contains(@class,'row-table')]//a[contains(@href,'partyId')])[6]");
-		String toLeadID = emp2.getText();
+		List<WebElement> emp2 = ((RemoteWebDriver) driver)
+				.findElementsByXPath("(//table[contains(@class,'row-table')]//a[contains(@href,'partyId')])");
+		String toLeadID = "";
+		for (int i = 7; i < emp2.size(); i += 5) {
+			if (!emp2.get(2).getText().equalsIgnoreCase(emp2.get(i).getText())) {
+				toLeadID = emp2.get(i - 2).getText();
+				break;
+			}
+		}
 		System.out.println("To Lead ID is " + toLeadID);
 		// Click Merge Leads
 		driver.findElement(By.linkText("Merge Leads")).click();
@@ -70,7 +78,10 @@ public class MergeLeadFinal extends TestBaseClass {
 		driver.findElement(By.xpath("//input[@name='id']")).sendKeys(fromLeadID);
 		// Click Find Leads
 		driver.findElement(By.xpath("//button[text()='Find Leads']")).click();
-		if (driver.findElement(By.xpath("//div//div[@class='x-paging-info']")).getText().contains("No records")) {
+		Thread.sleep(3000);
+		// To Check Merge is successful/Failed validation
+		String msg = driver.findElement(By.xpath("//div//div[@class='x-paging-info']")).getText();
+		if (msg.contains("No records")) {
 			System.out.println(fromLeadID + " Merge Lead is Successful - PASS");
 		} else {
 			System.out.println(fromLeadID + " Merge Lead is NOT Successful - FAIL");
