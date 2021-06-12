@@ -188,7 +188,7 @@ public class LeadsTestCases {
 		String getCmpName = currentCmpName.getText();
 		String actualCmpName = getCmpName.replaceAll("[^A-Za-z]", "");
 		System.out.println(actualCmpName + " " + newCmp);
-		softassert.assertEquals(actualCmpName, newCmp, "View Lead Title Check");
+		softassert.assertEquals(actualCmpName, newCmp, "New Company Name Check");
 		driver.close();
 		softassert.assertAll();
 
