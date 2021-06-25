@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite guice-stage="DEVELOPMENT" name="Failed suite [LangSuite]">
+  <test thread-count="5" name="EnglishTest(failed)" parallel="classes">
+    <parameter name="language" value="english"/>
+    <classes>
+      <class name="testcases.MergeLeadTest">
+        <methods>
+          <include name="postconditon"/>
+          <include name="runVerifyMergedLead"/>
+          <include name="preconditon"/>
+        </methods>
+      </class> <!-- testcases.MergeLeadTest -->
+    </classes>
+  </test> <!-- EnglishTest(failed) -->
+</suite> <!-- Failed suite [LangSuite] -->
