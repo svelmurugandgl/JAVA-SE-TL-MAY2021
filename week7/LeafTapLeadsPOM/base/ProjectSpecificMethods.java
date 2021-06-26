@@ -24,18 +24,15 @@ public class ProjectSpecificMethods {
 	@Parameters("language")
 	@BeforeMethod
 	public void preconditon(String language) throws IOException, InterruptedException {
-		try {
-			WebDriverManager.chromedriver().setup();
-			driver = new ChromeDriver();
-			FileInputStream fis = new FileInputStream("./src/main/resources/" + language + ".properties");
-			prop = new Properties();
-			prop.load(fis);
-			driver.get(prop.getProperty("url"));
-			driver.manage().window().maximize();
-			driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+
+		WebDriverManager.chromedriver().setup();
+		driver = new ChromeDriver();
+		FileInputStream fis = new FileInputStream("./src/main/resources/" + language + ".properties");
+		prop = new Properties();
+		prop.load(fis);
+		driver.get(prop.getProperty("url"));
+		driver.manage().window().maximize();
+		driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
 
 	}
 
