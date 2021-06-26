@@ -17,32 +17,26 @@ public class LoginPage extends ProjectSpecificMethods {
 
 	// Action Methods
 	public LoginPage enterUsername() {
-		try {
-			WebElement loginUsername = driver.findElement(By.id("username"));
-			loginUsername.sendKeys(prop.getProperty("username"));
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+
+		WebElement loginUsername = driver.findElement(By.id("username"));
+		loginUsername.sendKeys(prop.getProperty("username"));
+
 		return this;
 	}
 
 	public LoginPage enterPassword() {
-		try {
-			WebElement loginPassword = driver.findElement(By.id("password"));
-			loginPassword.sendKeys(prop.getProperty("password"));
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+
+		WebElement loginPassword = driver.findElement(By.id("password"));
+		loginPassword.sendKeys(prop.getProperty("password"));
+
 		return this;
 	}
 
 	public HomePage clickLoginButton() {
-		try {
-			WebElement loginButton = driver.findElement(By.className("decorativeSubmit"));
-			loginButton.click();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+
+		WebElement loginButton = driver.findElement(By.className("decorativeSubmit"));
+		loginButton.click();
+
 		return new HomePage(driver, prop);
 	}
 
