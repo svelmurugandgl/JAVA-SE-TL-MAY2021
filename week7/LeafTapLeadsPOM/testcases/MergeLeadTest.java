@@ -11,6 +11,7 @@ public class MergeLeadTest extends ProjectSpecificMethods
 	@Test(dependsOnGroups="sanity")
 	public void runVerifyMergedLead() throws InterruptedException
 	{
+		try {
 		new LoginPage(driver,prop).
 		enterUsername().
 		enterPassword().
@@ -39,6 +40,11 @@ public class MergeLeadTest extends ProjectSpecificMethods
 		enterFromLeadID().
 		clickFindLeadsButton().
 		verifyMergedLead();
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+		}
 		
 	}
 		
